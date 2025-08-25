@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "./components/responsive.css";
 import Footer from "./components/Footer";
 import CosmicWaves from "./components/CosmicWaves";
 
