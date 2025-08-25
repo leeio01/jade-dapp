@@ -1,8 +1,8 @@
 :root {
-  --bg: #0b0b0f;       /* Deep black background */
-  --fg: #e8f0ff;       /* Off-white text */
-  --jade: #00ffa3;     /* Jade green accent */
-  --jade-hover: #00d488; /* Darker jade on hover */
+  --bg: #0b0b0f;          /* Deep black background */
+  --fg: #e8f0ff;          /* Off-white text */
+  --jade: #00ffa3;        /* Jade green accent */
+  --jade-hover: #00d488;  /* Darker jade on hover */
   --muted: #9aa4b2;
   --border: rgba(255, 255, 255, 0.08);
 }
@@ -36,22 +36,44 @@ body {
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--jade);
+  color: #ffffff;
 }
 
+/* Wallet button with shimmer */
 .wallet-btn {
-  background: var(--jade);
+  background: linear-gradient(90deg, #00ffa3, #00d488);
   color: black;
   font-weight: 600;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 163, 0.3);
 }
 
-.wallet-btn:hover {
-  background: var(--jade-hover);
+.wallet-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -150%; }
+  100% { left: 150%; }
 }
 
 /* Presale container aligned right */
@@ -63,7 +85,8 @@ body {
 }
 
 .presale-card {
-  width: 500px;
+  max-width: 500px;
+  width: 100%;
   min-height: 420px;
   background: rgba(20, 20, 20, 0.9);
   border: 1px solid var(--border);
@@ -79,7 +102,7 @@ body {
 
 .presale-card h2 {
   margin: 0;
-  color: var(--A);
+  color: var(--jade);
   font-size: 1.6rem;
 }
 
@@ -109,81 +132,12 @@ body {
   color: var(--fg);
 }
 
+/* Buy button with animated hover */
 .buy-btn {
-  background: var(--jade);
-  color: black;
-  font-weight: 600;
-  padding: 12px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.buy-btn:hover {
-  background: var(--jade-hover);
-}
-.buy-btn {
-  background: #00ffa3;   /* Original jade green */
-  color: black;
-  font-weight: 600;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;  /* Smooth color transition */
-}
-
-.buy-btn:hover {
-  background: black;   /* Full color change on hover (red example) */
-  color: white;           /* Text color changes too */
-  transform: scale(1.05); /* Optional: slight zoom */
-}
-.main-section {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 80px; /* increase spacing */
-  margin: 50px auto;
-  max-width: 1200px;
-  padding: 20px;
-  position: relative;
-}
-
-/* Left text */
-.info-card {
-  flex: 1;
-  color: white;
-  max-width: 400px;
-  transform: translateX(-20px); /* move slightly left */
-}
-
-.info-card h2 {
-  font-size: 2rem;
-  margin: 0;
-}
-
-.info-card h3 {
-  font-size: 1.5rem;
-  margin: 10px 0 15px;
-  color: #00ffcc;
-}
-
-.info-card p {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* Right presale widget */
-.presale-container {
-  flex-shrink: 0;
-  transform: translateX(20px); /* move slightly right */
-}
-.wallet-btn {
   background: linear-gradient(90deg, #00ffa3, #00d488);
   color: black;
   font-weight: 600;
-  padding: 10px 22px;
+  padding: 12px 20px;
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -193,29 +147,40 @@ body {
   box-shadow: 0 0 15px rgba(0, 255, 163, 0.3);
 }
 
-/* Shimmer effect always running */
-.wallet-btn::before {
+.buy-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 163, 0.6);
+}
+
+.buy-btn::before {
   content: "";
   position: absolute;
   top: 0;
-  left: -150%;
-  width: 150%;
+  left: -100%;
+  width: 100%;
   height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.6),
-    transparent
-  );
-  transform: skewX(-20deg);
-  animation: shimmer 2.5s infinite; /* 🔥 always runs */
+  background: linear-gradient(90deg, #00ffa3, #00d488, #00ffa3);
+  transition: left 0.5s ease;
+  z-index: 0;
 }
 
-@keyframes shimmer {
-  0% {
-    left: -150%;
+.buy-btn:hover::before {
+  left: 0;
+}
+
+.buy-btn span {
+  position: relative;
+  z-index: 1; /* keep text on top of animation */
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .presale-container {
+    justify-content: center;
+    padding: 20px;
   }
-  100% {
-    left: 150%;
+  .presale-card {
+    padding: 24px;
+    min-height: auto;
   }
 }
