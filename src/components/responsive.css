@@ -1,0 +1,31 @@
+/* responsive.css */
+
+@media (max-width: 768px) {
+  .presale-container {
+    flex-direction: column; /* stack vertically */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .waves-section {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .presale-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .wallet-btn {
+    width: 100%;
+  }
+}
