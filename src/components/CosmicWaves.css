@@ -38,3 +38,30 @@
     transform: rotate(360deg) translate(-25%, -25%);
   }
 }
+
+/* Text floating ON waves */
+.waves-text {
+  position: absolute;
+  top: 0; /* start from top */
+  left: 2rem; /* left-aligned */
+  transform: translateY(0);
+  text-align: left;
+  color: #ffffff;
+  z-index: 2;
+  font-weight: bold;
+  font-size: 4rem; /* big enough to reach wave bottom */
+  line-height: 1.1;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .waves-section {
+    height: 150px; /* smaller wave area */
+  }
+
+  .waves-text {
+    font-size: 2.5rem; /* adjusted for mobile */
+    left: 1rem;
+    top: 0; 
+  }
+}
