@@ -1,0 +1,221 @@
+:root {
+  --bg: #0b0b0f;       /* Deep black background */
+  --fg: #e8f0ff;       /* Off-white text */
+  --jade: #00ffa3;     /* Jade green accent */
+  --jade-hover: #00d488; /* Darker jade on hover */
+  --muted: #9aa4b2;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, sans-serif;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--jade);
+}
+
+.wallet-btn {
+  background: var(--jade);
+  color: black;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.wallet-btn:hover {
+  background: var(--jade-hover);
+}
+
+/* Presale container aligned right */
+.presale-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 60px 80px;
+}
+
+.presale-card {
+  width: 500px;
+  min-height: 420px;
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px;
+  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  box-shadow: 0 0 40px rgba(0, 255, 163, 0.3);
+  backdrop-filter: blur(14px);
+}
+
+.presale-card h2 {
+  margin: 0;
+  color: var(--A);
+  font-size: 1.6rem;
+}
+
+.presale-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #222;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--jade);
+}
+
+.input {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #111;
+  color: var(--fg);
+}
+
+.buy-btn {
+  background: var(--jade);
+  color: black;
+  font-weight: 600;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.buy-btn:hover {
+  background: var(--jade-hover);
+}
+.buy-btn {
+  background: #00ffa3;   /* Original jade green */
+  color: black;
+  font-weight: 600;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;  /* Smooth color transition */
+}
+
+.buy-btn:hover {
+  background: black;   /* Full color change on hover (red example) */
+  color: white;           /* Text color changes too */
+  transform: scale(1.05); /* Optional: slight zoom */
+}
+.main-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px; /* increase spacing */
+  margin: 50px auto;
+  max-width: 1200px;
+  padding: 20px;
+  position: relative;
+}
+
+/* Left text */
+.info-card {
+  flex: 1;
+  color: white;
+  max-width: 400px;
+  transform: translateX(-20px); /* move slightly left */
+}
+
+.info-card h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.info-card h3 {
+  font-size: 1.5rem;
+  margin: 10px 0 15px;
+  color: #00ffcc;
+}
+
+.info-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Right presale widget */
+.presale-container {
+  flex-shrink: 0;
+  transform: translateX(20px); /* move slightly right */
+}
+.wallet-btn {
+  background: linear-gradient(90deg, #00ffa3, #00d488);
+  color: black;
+  font-weight: 600;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 163, 0.3);
+}
+
+/* Shimmer effect always running */
+.wallet-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shimmer 2.5s infinite; /* 🔥 always runs */
+}
+
+@keyframes shimmer {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
