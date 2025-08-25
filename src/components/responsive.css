@@ -1,6 +1,7 @@
 /* responsive.css */
 
 @media (max-width: 768px) {
+  /* Keep presale section responsive */
   .presale-container {
     flex-direction: column; /* stack vertically */
     align-items: center;
@@ -20,12 +21,22 @@
     max-width: 100%;
   }
 
+  /* Navbar fix: keep logo and button in one line */
   .navbar {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;       /* row instead of column */
+    justify-content: space-between; /* push logo left, button right */
+    align-items: center;       /* vertically center items */
+    gap: 0;                    /* remove extra gap */
+    padding: 15px 20px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
   }
 
   .wallet-btn {
-    width: 100%;
+    width: auto;               /* allow button to stay inline */
+    padding: 8px 16px;
+    font-size: 0.9rem;
   }
 }
