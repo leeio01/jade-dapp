@@ -1,10 +1,21 @@
 import React from "react";
+import {
+  SiBinance,
+  SiCocacola,
+  SiEthereum,
+  SiRipple,
+  SiLitecoin,
+  SiPolygon,
+} from "react-icons/si";
 import "./App.css";
 import "./components/responsive.css";
 import Footer from "./components/Footer";
 import CosmicWaves from "./components/CosmicWaves";
 
 const App: React.FC = () => {
+  // 30% transparent → opacity 0.7
+  const logoStyle = { color: "#D3D3D3", opacity: 0.7 };
+
   return (
     <div className="app">
       {/* Top Navbar */}
@@ -35,7 +46,39 @@ const App: React.FC = () => {
             placeholder="Enter amount in ETH"
             className="input"
           />
-          <button className="buy-btn">Buy Now</button>
+          <button className="buy-btn">
+            <span>Buy Now</span>
+          </button>
+        </div>
+
+        {/* Logos behind headline ONLY */}
+        <div className="crypto-marquee">
+          <div className="crypto-track">
+            <div className="logo-item">
+              <SiBinance size={36} style={logoStyle} />
+              <span style={logoStyle}>Binance</span>
+            </div>
+            <div className="logo-item">
+              <SiCocacola size={36} style={logoStyle} />
+              <span style={logoStyle}>CocaCola</span>
+            </div>
+            <div className="logo-item">
+              <SiEthereum size={36} style={logoStyle} />
+              <span style={logoStyle}>Ethereum</span>
+            </div>
+            <div className="logo-item">
+              <SiRipple size={36} style={logoStyle} />
+              <span style={logoStyle}>Ripple</span>
+            </div>
+            <div className="logo-item">
+              <SiLitecoin size={36} style={logoStyle} />
+              <span style={logoStyle}>Litecoin</span>
+            </div>
+            <div className="logo-item">
+              <SiPolygon size={36} style={logoStyle} />
+              <span style={logoStyle}>Polygon</span>
+            </div>
+          </div>
         </div>
       </div>
 

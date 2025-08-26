@@ -1,8 +1,8 @@
 :root {
-  --bg: #0b0b0f;          /* Deep black background */
-  --fg: #e8f0ff;          /* Off-white text */
-  --jade: #00ffa3;        /* Jade green accent */
-  --jade-hover: #00d488;  /* Darker jade on hover */
+  --bg: #0b0b0f;         
+  --fg: #e8f0ff;     
+  --jade: #00ffa3;       
+  --jade-hover: #00d488;  
   --muted: #9aa4b2;
   --border: rgba(255, 255, 255, 0.08);
 }
@@ -39,7 +39,7 @@ body {
   color: #ffffff;
 }
 
-/* Wallet button with shimmer */
+/* Wallet button */
 .wallet-btn {
   background: linear-gradient(90deg, #00ffa3, #00d488);
   color: black;
@@ -50,7 +50,6 @@ body {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 0 15px rgba(0, 255, 163, 0.3);
 }
 
@@ -76,12 +75,13 @@ body {
   100% { left: 150%; }
 }
 
-/* Presale container aligned right */
+/* Presale container */
 .presale-container {
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
   padding: 60px 80px;
+  position: relative;
 }
 
 .presale-card {
@@ -98,6 +98,7 @@ body {
   gap: 22px;
   box-shadow: 0 0 40px rgba(0, 255, 163, 0.3);
   backdrop-filter: blur(14px);
+  z-index: 1;
 }
 
 .presale-card h2 {
@@ -132,7 +133,6 @@ body {
   color: var(--fg);
 }
 
-/* Buy button with animated hover */
 .buy-btn {
   background: linear-gradient(90deg, #00ffa3, #00d488);
   color: black;
@@ -143,7 +143,6 @@ body {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 0 15px rgba(0, 255, 163, 0.3);
 }
 
@@ -152,28 +151,11 @@ body {
   box-shadow: 0 0 25px rgba(0, 255, 163, 0.6);
 }
 
-.buy-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, #00ffa3, #00d488, #00ffa3);
-  transition: left 0.5s ease;
-  z-index: 0;
-}
-
-.buy-btn:hover::before {
-  left: 0;
-}
-
 .buy-btn span {
   position: relative;
-  z-index: 1; /* keep text on top of animation */
+  z-index: 1;
 }
 
-/* Responsive tweaks */
 @media (max-width: 768px) {
   .presale-container {
     justify-content: center;
@@ -183,4 +165,60 @@ body {
     padding: 24px;
     min-height: auto;
   }
+}
+
+/* Logos behind headline */
+.crypto-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  bottom: 120px;
+  left: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+.crypto-track {
+  display: flex;
+  gap: 60px;
+  animation: scroll 5s linear infinite;
+  align-items: center;
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-weight: bold;
+  background: transparent;
+  opacity: 0.7; /* 30% transparency */
+}
+
+/* Infinite seamless scroll trick */
+.crypto-track::after {
+  content: '';
+  flex-shrink: 0;
+  width: 100%;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.crypto-track svg {
+  color: white;
 }

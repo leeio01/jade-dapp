@@ -23,10 +23,10 @@
 
   /* Navbar fix: keep logo and button in one line */
   .navbar {
-    flex-direction: row;       /* row instead of column */
-    justify-content: space-between; /* push logo left, button right */
-    align-items: center;       /* vertically center items */
-    gap: 0;                    /* remove extra gap */
+    flex-direction: row;      
+    justify-content: space-between;
+    align-items: center;       
+    gap: 0;                   
     padding: 15px 20px;
   }
 
@@ -35,7 +35,7 @@
   }
 
   .wallet-btn {
-    width: auto;               /* allow button to stay inline */
+    width: auto;              
     padding: 8px 16px;
     font-size: 0.9rem;
   }
