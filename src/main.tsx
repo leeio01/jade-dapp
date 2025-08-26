@@ -1,4 +1,3 @@
-// main.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
@@ -10,10 +9,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // Web3Modal setup
 import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
 import { mainnet } from "wagmi/chains";
+import type { Chain } from "wagmi/chains";
+
+// Project ID from WalletConnect
 const projectId = "74621c62cfe8b6b54d1de162ac1b2d6f";
 
 // Wagmi config
-const chains = [mainnet];
+const chains: [Chain, ...Chain[]] = [mainnet];
 const wagmiConfig = defaultWagmiConfig({
   projectId,
   chains,
@@ -26,7 +28,6 @@ const queryClient = new QueryClient();
 createWeb3Modal({
   wagmiConfig,
   projectId,
-  chains,
 });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
