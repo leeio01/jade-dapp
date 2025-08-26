@@ -12,16 +12,31 @@ import "./components/responsive.css";
 import Footer from "./components/Footer";
 import CosmicWaves from "./components/CosmicWaves";
 
+// ✅ Web3Modal + Wagmi hooks
+import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useAccount } from "wagmi";
+
 const App: React.FC = () => {
-  // 30% transparent → opacity 0.7
   const logoStyle = { color: "#D3D3D3", opacity: 0.7 };
+
+  // ✅ hooks
+  const { open } = useWeb3Modal();
+  const { address, isConnected } = useAccount();
+
+  // ✅ shorten address for button
+  const shortenAddress = (addr: string) =>
+    addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : "";
 
   return (
     <div className="app">
       {/* Top Navbar */}
       <header className="navbar">
         <div className="logo">JADETOKEN</div>
-        <button className="wallet-btn">Connect Wallet</button>
+
+        {/* ✅ Custom Button with dynamic text */}
+        <button className="wallet-btn" onClick={() => open()}>
+          {isConnected ? shortenAddress(address!) : "Connect Wallet"}
+        </button>
       </header>
 
       {/* Presale + Waves Section */}
@@ -51,7 +66,7 @@ const App: React.FC = () => {
           </button>
         </div>
 
-        {/* Logos behind headline ONLY */}
+        {/* Logos behind headline */}
         <div className="crypto-marquee">
           <div className="crypto-track">
             <div className="logo-item">

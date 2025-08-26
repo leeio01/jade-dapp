@@ -222,3 +222,17 @@ body {
 .crypto-track svg {
   color: white;
 }
+/* Prevent Web3Modal from zooming or shifting page */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: auto !important;   /* keep normal scroll */
+  position: static !important; /* prevent shift */
+  height: 100% !important;
+}
+
+body.w3m-modal-open {
+  overflow: hidden !important;  /* allow modal to lock scroll, but no zoom */
+  padding-right: 0 !important;  /* stop scrollbar compensation */
+}
