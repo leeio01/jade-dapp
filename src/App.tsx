@@ -102,7 +102,10 @@ const App: React.FC = () => {
             <div className="progress-fill" style={{ width: "10%" }}></div>
           </div>
 
-          <button className="buy-btn">Buy Now</button>
+          {/* Buy Now Button connected to Wallet */}
+          <button className="buy-btn" onClick={() => open()} disabled={isConnected}>
+            {isConnected ? "Wallet Connected" : "Buy Now"}
+          </button>
         </div>
 
         {/* Logos marquee */}
