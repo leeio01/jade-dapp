@@ -84,6 +84,7 @@ body {
   position: relative;
 }
 
+/* Presale card */
 .presale-card {
   max-width: 500px;
   width: 100%;
@@ -224,20 +225,42 @@ body.w3m-modal-open {
 /* Responsive adjustments */
 @media (max-width: 768px) {
 
-  /* Make presale container stacked */
+  /* Stack content */
   .presale-container {
     justify-content: center;
     padding: 20px;
     flex-direction: column;
   }
 
-  /* Move Become a JADE heading on top */
+  /* Presale card responsive */
+  .presale-card {
+    order: 2;
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+    min-height: auto;
+    border-radius: 16px;
+    box-sizing: border-box;
+  }
+
+  /* ContractInfo container width reduced to 80% */
+  .contract-info {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  /* Become a JADE heading */
   .become-jade-wrapper {
     order: 0; 
     text-align: center;
   }
 
-  /* Crypto slider under heading, above presale card */
+  .become-jade-wrapper h1, 
+  .become-jade-wrapper h2 {
+    font-size: 1.2rem;
+  }
+
+  /* Crypto slider above presale card */
   .crypto-marquee {
     position: relative;
     bottom: auto;
@@ -246,14 +269,7 @@ body.w3m-modal-open {
     justify-content: center;
     -webkit-mask-image: none;
     mask-image: none;
-    order: 1; /* appear after heading, before presale card */
-  }
-
-  /* Presale card below slider */
-  .presale-card {
-    order: 2;
-    padding: 24px;
-    min-height: auto;
+    order: 1; /* above presale card */
   }
 
   /* Scroll slower and narrower gaps on mobile */
@@ -265,11 +281,5 @@ body.w3m-modal-open {
   .logo-item {
     font-size: 0.8rem;
     opacity: 0.8;
-  }
-
-  /* Become a JADE heading slightly smaller */
-  .become-jade-wrapper h1, 
-  .become-jade-wrapper h2 {
-    font-size: 1.2rem;
   }
 }
