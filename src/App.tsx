@@ -8,7 +8,6 @@ import {
   SiPolygon,
 } from "react-icons/si";
 import "./App.css";
-import "./components/responsive.css";
 import Footer from "./components/Footer";
 import CosmicWaves from "./components/CosmicWaves";
 import CosmicWaves2 from "./components/CosmicWaves2";
