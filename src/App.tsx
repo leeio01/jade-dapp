@@ -16,6 +16,9 @@ import ContractInfo from "./components/ContractInfo";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useAccount } from "wagmi";
 
+// Import your logo
+import logo from "./assets/logo.png";
+
 const App: React.FC = () => {
   const logoStyle = { color: "#fff", opacity: 0.9 };
   const { open } = useWeb3Modal();
@@ -34,7 +37,11 @@ const App: React.FC = () => {
       {/* Navbar */}
       <header className="navbar">
         <div className="logo">
-          <SiPolygon size={50} color="#00ffa3" />
+          <img
+            src={logo}
+            alt="Logo"
+            style={{ width: "120px", height: "auto", objectFit: "contain" }}
+          />
         </div>
         <button className="wallet-btn" onClick={() => open()}>
           {isConnected ? shortenAddress(address!) : "Connect Wallet"}
