@@ -13,20 +13,21 @@ import Footer from "./components/Footer";
 import CosmicWaves from "./components/CosmicWaves";
 import CosmicWaves2 from "./components/CosmicWaves2";
 import ContractInfo from "./components/ContractInfo";
-import AboutSection from "./components/AboutSection"; // ✅ Import About Section
+import AboutSection from "./components/AboutSection";
 
-// ✅ Web3Modal + Wagmi hooks
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useAccount } from "wagmi";
+
+// ✅ Import logo from assets
+import logo from "./assets/logo.png";
 
 const App: React.FC = () => {
   const logoStyle = { color: "#D3D3D3", opacity: 0.7 };
 
-  // ✅ hooks
   const { open } = useWeb3Modal();
   const { address, isConnected } = useAccount();
 
-  // ✅ shorten address for button
+  // ✅ shorten address for wallet button
   const shortenAddress = (addr: string) =>
     addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : "";
 
@@ -34,9 +35,12 @@ const App: React.FC = () => {
     <div className="app">
       {/* Top Navbar */}
       <header className="navbar">
-        <div className="logo">JADETOKEN</div>
+        <div className="logo">
+          {/* Logo image */}
+          <img src={logo} alt="JADETOKEN Logo" style={{ height: "50px" }} />
+        </div>
 
-        {/* ✅ Custom Button with dynamic text */}
+        {/* Wallet Button */}
         <button className="wallet-btn" onClick={() => open()}>
           {isConnected ? shortenAddress(address!) : "Connect Wallet"}
         </button>
@@ -100,7 +104,7 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* ✅ Contract Info Section */}
+      {/* Contract Info Section */}
       <section className="contract-info-section">
         <ContractInfo
           contractAddress="0x6a145d811f6cf02a2086dc52ff718d76fcaf78cd"
@@ -108,15 +112,15 @@ const App: React.FC = () => {
         />
       </section>
 
-      {/* ✅ Cosmic Particles Waves under Presale Card */}
+      {/* Cosmic Particles Waves under Presale Card */}
       <section className="cosmicwaves2-section">
         <CosmicWaves2 />
       </section>
 
-      {/* ✅ About Section */}
+      {/* About Section */}
       <AboutSection />
 
-      {/* ✅ Modern Footer */}
+      {/* Modern Footer */}
       <Footer />
     </div>
   );
