@@ -3,13 +3,13 @@ import React from "react";
 interface ContractInfoProps {
   contractAddress: string;
   network: string;
-  width?: string;
+  boxWidth?: string; // optional width prop
 }
 
 const ContractInfo: React.FC<ContractInfoProps> = ({
   contractAddress,
   network,
-  width = "90%",
+  boxWidth = "900px", // ✅ adjust width here
 }) => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(contractAddress);
@@ -18,23 +18,20 @@ const ContractInfo: React.FC<ContractInfoProps> = ({
 
   return (
     <div style={styles.container}>
-      <div style={{ ...styles.box, width }}>
-        {/* Header Row */}
-        <div style={{ ...styles.row, ...styles.headerRow }}>
-          <div style={{ ...styles.col, flex: 3, textAlign: "left" }}>CONTRACT ADDRESS</div>
-          <div style={{ ...styles.col, flex: 1, textAlign: "left" }}>NETWORK</div>
-          <div style={{ ...styles.col, flex: 1 }}>COPY ADDRESS</div>
-        </div>
+      <div style={{ ...styles.box, width: boxWidth }}>
+        {/* Headline on first row */}
+        <div style={styles.label}>CONTRACT ADDRESS</div>
 
-        {/* Value Row */}
-        <div style={{ ...styles.row, marginBottom: 0 }}>
-          <div style={{ ...styles.col, flex: 3, textAlign: "left" }}>{contractAddress}</div>
-          <div style={{ ...styles.col, flex: 1, textAlign: "left" }}>{network}</div>
-          <div style={{ ...styles.col, flex: 1 }}>
-            <button style={styles.button} onClick={copyToClipboard}>
-              COPY
-            </button>
+        {/* Sub row with address + network + copy */}
+        <div style={styles.row}>
+          <div style={styles.leftGroup}>
+            <div style={styles.value}>{contractAddress}</div>
+            <div style={styles.network}>NETWORK: {network}</div>
           </div>
+
+          <button style={styles.button} onClick={copyToClipboard}>
+            COPY
+          </button>
         </div>
       </div>
     </div>
@@ -50,30 +47,36 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   box: {
     background: "#1a1a1f",
-    borderRadius: "10px",
-    padding: "8px",
-    maxWidth: "1200px",
+    borderRadius: "12px",
+    padding: "20px",
     color: "white",
-    textAlign: "center",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.5)",
+  },
+  label: {
+    fontSize: "13px",
+    fontWeight: 600,
+    opacity: 0.7,
+    marginBottom: "6px", // ✅ closer spacing headline → sub
+    letterSpacing: "1px",
   },
   row: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 0,
   },
-  headerRow: {
-    opacity: 0.5,
+  leftGroup: {
+    display: "flex",
+    alignItems: "center",
+    gap: "14px", // space between address & network
+  },
+  value: {
+    fontSize: "16px",
     fontWeight: 600,
-    fontSize: "14px",
-    paddingBottom: "2px",
   },
-  col: {
-    padding: "5px 10px",
+  network: {
     fontSize: "14px",
-    fontWeight: 500,
-    color: "#fff",
-    textAlign: "center",
+    fontWeight: 600,
+    color: "#00ffa3",
   },
   button: {
     padding: "6px 15px",
