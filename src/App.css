@@ -161,27 +161,20 @@ body {
 /* Logos behind headline */
 .crypto-marquee {
   width: 100%;
-  overflow: hidden;
+  overflow: hidden; /* Prevent manual scrolling */
   position: absolute;
   bottom: 120px;
   left: 0;
   z-index: 0;
   display: flex;
   justify-content: center;
-
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: cover;
-  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-  mask-repeat: no-repeat;
-  mask-size: cover;
 }
 
 .crypto-track {
   display: flex;
   gap: 60px;
-  animation: scroll 5s linear infinite;
   align-items: center;
+  animation: scroll 15s linear infinite; /* Auto-slide only */
 }
 
 .logo-item {
@@ -247,71 +240,6 @@ body.w3m-modal-open {
   padding-right: 0 !important;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-
-  /* Stack content */
-  .presale-container {
-    justify-content: center;
-    padding: 20px;
-    flex-direction: column;
-  }
-
-  /* Presale card responsive */
-  .presale-card {
-    order: 2;
-    max-width: 100%;
-    width: 100%;
-    padding: 20px;
-    min-height: auto;
-    border-radius: 16px;
-    box-sizing: border-box;
-  }
-
-  /* ContractInfo container width reduced */
-  .contract-info {
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  /* Become a JADE heading smaller */
-  .become-jade-wrapper {
-    order: 0; 
-    text-align: left;
-  }
-
-  .become-jade-wrapper h1, 
-  .become-jade-wrapper h2 {
-    font-size: 1.2rem;
-  }
-
-  .become-jade-wrapper p {
-    font-size: 0.9rem;
-  }
-
-  /* Crypto slider above presale card */
-  .crypto-marquee {
-    position: relative;
-    bottom: auto;
-    margin: 20px 0;
-    display: flex;
-    justify-content: flex-start; /* aligned left */
-    -webkit-mask-image: none;
-    mask-image: none;
-    order: 1; /* above presale card */
-  }
-
-  /* Scroll slower and narrower gaps on mobile */
-  .crypto-track {
-    animation: scroll 10s linear infinite;
-    gap: 30px;
-  }
-
-  .logo-item {
-    font-size: 0.8rem;
-    opacity: 0.8;
-  }
-}
 /* Modern Container */
 .modern-container {
   display: flex;
@@ -346,40 +274,95 @@ body.w3m-modal-open {
   outline: none;
   text-align: right;
 }
-/* Mobile responsiveness for presale card */
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .presale-container {
+    justify-content: center;
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .presale-card {
+    order: 2;
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+    min-height: auto;
+    border-radius: 16px;
+    box-sizing: border-box;
+  }
+
+  .contract-info {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .become-jade-wrapper {
+    order: 0; 
+    text-align: left;
+  }
+
+  .become-jade-wrapper h1, 
+  .become-jade-wrapper h2 {
+    font-size: 1.2rem;
+  }
+
+  .become-jade-wrapper p {
+    font-size: 0.9rem;
+  }
+
+  .crypto-marquee {
+    position: relative;
+    bottom: auto;
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden; /* Disable manual scrolling */
+    order: 1;
+  }
+
+  .crypto-track {
+    animation: scroll 15s linear infinite;
+    gap: 30px;
+  }
+
+  .logo-item {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+}
+
 @media (max-width: 480px) {
-  /* Modern container: stack boxes vertically */
   .modern-container {
     flex-direction: column !important;
     gap: 12px !important;
+    width: 85%;
+    margin-left: 0;
+    margin-right: auto;
   }
 
-  /* Each box takes full width */
   .modern-box {
     width: 100% !important;
     min-width: auto !important;
   }
 
-  /* Inputs expand to full width */
   .modern-box input {
     width: 100% !important;
     font-size: 14px;
     padding: 8px;
   }
 
-  /* Presale card padding adjustment */
   .presale-card.modern-presale {
     padding: 16px !important;
   }
 
-  /* Reduce button width */
   .buy-btn {
     width: 100% !important;
     font-size: 14px;
     padding: 10px 0;
   }
 
-  /* Accepting currencies row stack */
   .accepting-inline {
     flex-direction: column !important;
     align-items: flex-start !important;
@@ -388,26 +371,12 @@ body.w3m-modal-open {
 
   /* Crypto logos marquee */
   .crypto-marquee {
-    overflow-x: scroll;
-    padding: 10px 0;
+    overflow: hidden; /* Disable manual drag/swipe */
   }
 
   .crypto-track {
     display: flex;
     gap: 12px;
-  }
-}
-@media (max-width: 480px) {
-  .modern-container {
-    width: 85%;        /* Slightly smaller to fit inside card */
-    margin-left: 0;    /* Align fully to left */
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .modern-box {
-    width: 100%;       /* Fill container */
+    animation: scroll 12s linear infinite;
   }
 }
