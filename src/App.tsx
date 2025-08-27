@@ -1,78 +1,104 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SiBinance,
   SiCocacola,
   SiEthereum,
-  SiRipple,
   SiLitecoin,
   SiPolygon,
+  SiBitcoin,
 } from "react-icons/si";
 import "./App.css";
 import Footer from "./components/Footer";
 import CosmicWaves from "./components/CosmicWaves";
 import CosmicWaves2 from "./components/CosmicWaves2";
 import ContractInfo from "./components/ContractInfo";
-import AboutSection from "./components/AboutSection";
 
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useAccount } from "wagmi";
 
-// ✅ Import logo from assets
-import logo from "./assets/logo.png";
-
 const App: React.FC = () => {
-  const logoStyle = { color: "#D3D3D3", opacity: 0.7 };
-
+  const logoStyle = { color: "#fff", opacity: 0.9 };
   const { open } = useWeb3Modal();
   const { address, isConnected } = useAccount();
 
-  // ✅ shorten address for wallet button
   const shortenAddress = (addr: string) =>
     addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : "";
 
+  // Presale states
+  const [receiveAmount, setReceiveAmount] = useState(0);
+  const tokenPrice = 2; // $2 per JADE token
+  const payAmount = receiveAmount * tokenPrice;
+
   return (
     <div className="app">
-      {/* Top Navbar */}
+      {/* Navbar */}
       <header className="navbar">
         <div className="logo">
-          {/* Logo image */}
-          <img src={logo} alt="JADETOKEN Logo" style={{ height: "50px" }} />
+          <SiPolygon size={50} color="#00ffa3" />
         </div>
-
-        {/* Wallet Button */}
         <button className="wallet-btn" onClick={() => open()}>
           {isConnected ? shortenAddress(address!) : "Connect Wallet"}
         </button>
       </header>
 
-      {/* Presale + Waves Section */}
+      {/* Presale Section */}
       <div className="presale-container">
-        {/* LEFT SIDE: Cosmic Waves */}
+        {/* Left: Cosmic Waves */}
         <div className="waves-section">
           <CosmicWaves />
         </div>
 
-        {/* RIGHT SIDE: Presale Widget */}
-        <div className="presale-card">
-          <h2>Presale Live</h2>
-          <p>Buy Jade Tokens before public launch</p>
+        {/* Right: Modern Presale Card */}
+        <div className="presale-card modern-presale">
+          <h2 className="usd-raised">USD Raised</h2>
+          <p className="raised-amount">$100,000.00 / $1,000,000.00</p>
 
-          <div className="progress-bar">
-            <div className="progress-fill" style={{ width: "40%" }}></div>
+          {/* ✅ Removed the BUY $JADE heading */}
+
+          {/* Modern Pay / Receive Container */}
+          <div className="modern-container">
+            <div className="modern-box">
+              <label>You Pay (USD)</label>
+              <input type="text" value={`$${payAmount.toFixed(2)}`} readOnly />
+            </div>
+            <div className="modern-box">
+              <label>You Get ($JADE)</label>
+              <input
+                type="number"
+                placeholder="0"
+                value={receiveAmount}
+                onChange={(e) => setReceiveAmount(Number(e.target.value))}
+              />
+            </div>
           </div>
-          <p>40% Sold • 600 / 1500 JADE</p>
 
-          <input
-            type="number"
-            placeholder="Enter amount in ETH"
-            className="input"
-          />
-          <button className="buy-btn">
-            <span>Buy Now</span>
-          </button>
+          {/* Accepting currencies (logos aligned right) */}
+          <div
+            className="accepting-inline"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginTop: "15px",
+            }}
+          >
+            <span>Accepting:</span>
+            <div style={{ display: "flex", gap: "12px" }}>
+              <SiEthereum size={20} style={{ color: "#fff" }} />
+              <SiBitcoin size={20} style={{ color: "#fff" }} />
+              <SiPolygon size={20} style={{ color: "#fff" }} />
+            </div>
+          </div>
+
+          {/* Progress Bar */}
+          <div className="progress-bar">
+            <div className="progress-fill" style={{ width: "10%" }}></div>
+          </div>
+
+          <button className="buy-btn">Buy Now</button>
         </div>
 
-        {/* Logos behind headline */}
+        {/* Logos marquee */}
         <div className="crypto-marquee">
           <div className="crypto-track">
             <div className="logo-item">
@@ -88,10 +114,6 @@ const App: React.FC = () => {
               <span style={logoStyle}>Ethereum</span>
             </div>
             <div className="logo-item">
-              <SiRipple size={36} style={logoStyle} />
-              <span style={logoStyle}>Ripple</span>
-            </div>
-            <div className="logo-item">
               <SiLitecoin size={36} style={logoStyle} />
               <span style={logoStyle}>Litecoin</span>
             </div>
@@ -103,7 +125,7 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* Contract Info Section */}
+      {/* Contract Info */}
       <section className="contract-info-section">
         <ContractInfo
           contractAddress="0x6a145d811f6cf02a2086dc52ff718d76fcaf78cd"
@@ -111,15 +133,12 @@ const App: React.FC = () => {
         />
       </section>
 
-      {/* Cosmic Particles Waves under Presale Card */}
+      {/* Cosmic waves under presale */}
       <section className="cosmicwaves2-section">
         <CosmicWaves2 />
       </section>
 
-      {/* About Section */}
-      <AboutSection />
-
-      {/* Modern Footer */}
+      {/* Footer */}
       <Footer />
     </div>
   );

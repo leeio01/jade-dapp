@@ -82,6 +82,7 @@ body {
   align-items: flex-start;
   padding: 60px 80px;
   position: relative;
+  gap: 30px;
 }
 
 /* Presale card */
@@ -208,6 +209,30 @@ body {
   color: white;
 }
 
+/* Become a JADE heading wrapper */
+.become-jade-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 500px;
+}
+
+.become-jade-wrapper h1, 
+.become-jade-wrapper h2 {
+  margin: 0;
+  color: var(--jade);
+}
+
+.become-jade-wrapper p {
+  color: var(--muted);
+  max-width: 400px;
+}
+
+/* ContractInfo container */
+.contract-info {
+  width: 100%;
+}
+
 /* Prevent Web3Modal from zooming or shifting page */
 html, body {
   margin: 0;
@@ -243,21 +268,25 @@ body.w3m-modal-open {
     box-sizing: border-box;
   }
 
-  /* ContractInfo container width reduced to 80% */
+  /* ContractInfo container width reduced */
   .contract-info {
     width: 80%;
     margin: 0 auto;
   }
 
-  /* Become a JADE heading */
+  /* Become a JADE heading smaller */
   .become-jade-wrapper {
     order: 0; 
-    text-align: center;
+    text-align: left;
   }
 
   .become-jade-wrapper h1, 
   .become-jade-wrapper h2 {
     font-size: 1.2rem;
+  }
+
+  .become-jade-wrapper p {
+    font-size: 0.9rem;
   }
 
   /* Crypto slider above presale card */
@@ -266,7 +295,7 @@ body.w3m-modal-open {
     bottom: auto;
     margin: 20px 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* aligned left */
     -webkit-mask-image: none;
     mask-image: none;
     order: 1; /* above presale card */
@@ -282,4 +311,38 @@ body.w3m-modal-open {
     font-size: 0.8rem;
     opacity: 0.8;
   }
+}
+/* Modern Container */
+.modern-container {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+  justify-content: center;
+}
+
+.modern-box {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modern-box label {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 6px;
+}
+
+.modern-box input {
+  background: #0f0f0f;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  color: #fff;
+  outline: none;
+  text-align: right;
 }
