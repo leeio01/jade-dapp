@@ -346,3 +346,68 @@ body.w3m-modal-open {
   outline: none;
   text-align: right;
 }
+/* Mobile responsiveness for presale card */
+@media (max-width: 480px) {
+  /* Modern container: stack boxes vertically */
+  .modern-container {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  /* Each box takes full width */
+  .modern-box {
+    width: 100% !important;
+    min-width: auto !important;
+  }
+
+  /* Inputs expand to full width */
+  .modern-box input {
+    width: 100% !important;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  /* Presale card padding adjustment */
+  .presale-card.modern-presale {
+    padding: 16px !important;
+  }
+
+  /* Reduce button width */
+  .buy-btn {
+    width: 100% !important;
+    font-size: 14px;
+    padding: 10px 0;
+  }
+
+  /* Accepting currencies row stack */
+  .accepting-inline {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px;
+  }
+
+  /* Crypto logos marquee */
+  .crypto-marquee {
+    overflow-x: scroll;
+    padding: 10px 0;
+  }
+
+  .crypto-track {
+    display: flex;
+    gap: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .modern-container {
+    width: 85%;        /* Slightly smaller to fit inside card */
+    margin-left: 0;    /* Align fully to left */
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .modern-box {
+    width: 100%;       /* Fill container */
+  }
+}
