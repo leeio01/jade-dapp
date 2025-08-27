@@ -199,12 +199,8 @@ body {
 }
 
 @keyframes scroll {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
 .crypto-track svg {
@@ -212,8 +208,7 @@ body {
 }
 
 /* Prevent Web3Modal from zooming or shifting page */
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
   overflow: auto !important;
@@ -228,12 +223,21 @@ body.w3m-modal-open {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+
+  /* Make presale container stacked */
   .presale-container {
     justify-content: center;
     padding: 20px;
     flex-direction: column;
   }
 
+  /* Move Become a JADE heading on top */
+  .become-jade-wrapper {
+    order: 0; 
+    text-align: center;
+  }
+
+  /* Crypto slider under heading, above presale card */
   .crypto-marquee {
     position: relative;
     bottom: auto;
@@ -242,14 +246,17 @@ body.w3m-modal-open {
     justify-content: center;
     -webkit-mask-image: none;
     mask-image: none;
-    order: -1; /* move marquee above presale card */
+    order: 1; /* appear after heading, before presale card */
   }
 
+  /* Presale card below slider */
   .presale-card {
+    order: 2;
     padding: 24px;
     min-height: auto;
   }
 
+  /* Scroll slower and narrower gaps on mobile */
   .crypto-track {
     animation: scroll 10s linear infinite;
     gap: 30px;
@@ -258,5 +265,11 @@ body.w3m-modal-open {
   .logo-item {
     font-size: 0.8rem;
     opacity: 0.8;
+  }
+
+  /* Become a JADE heading slightly smaller */
+  .become-jade-wrapper h1, 
+  .become-jade-wrapper h2 {
+    font-size: 1.2rem;
   }
 }
