@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import CosmicWaves from "./components/CosmicWaves";
 import CosmicWaves2 from "./components/CosmicWaves2";
 import ContractInfo from "./components/ContractInfo";
+import AboutSection from "./components/AboutSection"; // ✅ Import About Section
 
 // ✅ Web3Modal + Wagmi hooks
 import { useWeb3Modal } from "@web3modal/wagmi/react";
@@ -99,7 +100,7 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* ✅ NEW SECTION: Contract Info above Cosmic Waves */}
+      {/* ✅ Contract Info Section */}
       <section className="contract-info-section">
         <ContractInfo
           contractAddress="0x6a145d811f6cf02a2086dc52ff718d76fcaf78cd"
@@ -107,12 +108,15 @@ const App: React.FC = () => {
         />
       </section>
 
-      {/* ✅ NEW SECTION: Cosmic Particles Waves under Presale Card */}
+      {/* ✅ Cosmic Particles Waves under Presale Card */}
       <section className="cosmicwaves2-section">
         <CosmicWaves2 />
       </section>
 
-      {/* Footer */}
+      {/* ✅ About Section */}
+      <AboutSection />
+
+      {/* ✅ Modern Footer */}
       <Footer />
     </div>
   );
