@@ -111,8 +111,8 @@ const App: React.FC = () => {
           className="presale-message"
           style={{
             position: "absolute",
-            left: "110px",       // Distance from left edge
-            top: "280px",       // Slightly lower
+            left: "110px",
+            top: "280px",
             color: "#fff",
             opacity: 0.5,
             fontSize: "18px",
@@ -125,7 +125,7 @@ const App: React.FC = () => {
         </p>
 
         {/* Logos marquee */}
-        <div className="crypto-marquee">
+        <div className="crypto-marquee" style={{ marginTop: "0px" }}>
           <div className="crypto-track">
             <div className="logo-item">
               <SiBinance size={36} style={logoStyle} />
@@ -149,6 +149,26 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Mobile adjustments */}
+        <style>
+          {`
+            @media (max-width: 768px) {
+              .crypto-marquee {
+                margin-top: 66px !important; /* push slider down on mobile */
+              }
+
+              .presale-message {
+                left: auto !important;       /* remove left positioning */
+                right: 20px !important;      /* move box to the right side */
+                top: 180px !important;       /* vertical position */
+                max-width: 90% !important;
+                font-size: 16px !important;
+                text-align: left;            /* keep text aligned left inside the box */
+              }
+            }
+          `}
+        </style>
       </div>
 
       {/* Contract Info */}
