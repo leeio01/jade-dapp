@@ -33,7 +33,7 @@ const App: React.FC = () => {
   const payAmount = receiveAmount * tokenPrice;
 
   return (
-    <div className="app">
+    <div className="app" style={{ position: "relative" }}>
       {/* Navbar */}
       <header className="navbar">
         <div className="logo">
@@ -49,7 +49,7 @@ const App: React.FC = () => {
       </header>
 
       {/* Presale Section */}
-      <div className="presale-container">
+      <div className="presale-container" style={{ position: "relative" }}>
         {/* Left: Cosmic Waves */}
         <div className="waves-section">
           <CosmicWaves />
@@ -59,8 +59,6 @@ const App: React.FC = () => {
         <div className="presale-card modern-presale">
           <h2 className="usd-raised">USD Raised</h2>
           <p className="raised-amount">$100,000.00 / $1,000,000.00</p>
-
-          {/* ✅ Removed the BUY $JADE heading */}
 
           {/* Modern Pay / Receive Container */}
           <div className="modern-container">
@@ -79,7 +77,7 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          {/* Accepting currencies (logos aligned right) */}
+          {/* Accepting currencies */}
           <div
             className="accepting-inline"
             style={{
@@ -102,11 +100,29 @@ const App: React.FC = () => {
             <div className="progress-fill" style={{ width: "10%" }}></div>
           </div>
 
-          {/* Buy Now Button connected to Wallet */}
+          {/* Buy Now Button */}
           <button className="buy-btn" onClick={() => open()} disabled={isConnected}>
             {isConnected ? "Wallet Connected" : "Buy Now"}
           </button>
         </div>
+
+        {/* Presale Message Fixed to Left Side of Screen */}
+        <p
+          className="presale-message"
+          style={{
+            position: "absolute",
+            left: "110px",       // Distance from left edge
+            top: "280px",       // Slightly lower
+            color: "#fff",
+            opacity: 0.5,
+            fontSize: "18px",
+            fontWeight: 500,
+            maxWidth: "400px",
+          }}
+        >
+          Step into the AI-powered crypto revolution. Join our presale journey to
+          be part of reshaping the intersection of blockchain and music.
+        </p>
 
         {/* Logos marquee */}
         <div className="crypto-marquee">
