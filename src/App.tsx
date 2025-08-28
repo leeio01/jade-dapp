@@ -8,7 +8,6 @@ import {
   SiBitcoin,
 } from "react-icons/si";
 import "./App.css";
-import Footer from "./components/Footer";
 import CosmicWaves from "./components/CosmicWaves";
 import CosmicWaves2 from "./components/CosmicWaves2";
 import ContractInfo from "./components/ContractInfo";
@@ -112,7 +111,7 @@ const App: React.FC = () => {
           style={{
             position: "absolute",
             left: "110px",
-            top: "280px",
+            top: "300px",
             color: "#fff",
             opacity: 0.5,
             fontSize: "18px",
@@ -183,9 +182,6 @@ const App: React.FC = () => {
       <section className="cosmicwaves2-section">
         <CosmicWaves2 />
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 };
