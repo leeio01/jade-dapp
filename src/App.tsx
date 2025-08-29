@@ -29,9 +29,9 @@ const App: React.FC = () => {
     addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : "";
 
   // Presale states
-  const [receiveAmount, setReceiveAmount] = useState(0);
-  const tokenPrice = 2; // $2 per JADE token
-  const payAmount = receiveAmount * tokenPrice;
+  const [payAmount, setPayAmount] = useState<number>(0);
+  const tokenPrice = 0.01; // 1 JADE = $0.01
+  const receiveAmount = payAmount / tokenPrice;
 
   return (
     <div className="app" style={{ position: "relative" }}>
@@ -56,25 +56,119 @@ const App: React.FC = () => {
           <CosmicWaves />
         </div>
 
-        {/* Right: Modern Presale Card */}
+        {/* Right: Presale Card */}
         <div className="presale-card modern-presale">
-          <h2 className="usd-raised">USD Raised</h2>
-          <p className="raised-amount">$100,000.00 / $1,000,000.00</p>
+          {/* Header Row */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "15px",
+            }}
+          >
+            <h2 style={{ color: "#fff", margin: 0 }}>Buy $JADE Token</h2>
+            <span
+              style={{
+                background: "red",
+                color: "#fff",
+                fontSize: "12px",
+                fontWeight: "bold",
+                padding: "4px 10px",
+                borderRadius: "12px",
+              }}
+            >
+              LIVE
+            </span>
+          </div>
+
+          {/* Progress Bar */}
+          <div className="progress-bar">
+            <div
+              className="progress-fill"
+              style={{ width: "0.020%", background: "#00ff88" }}
+            ></div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              fontSize: "14px",
+              color: "#fff",
+              marginTop: "5px",
+            }}
+          >
+            $100 / $500,000
+          </div>
+
+          {/* Token Prices (one line) */}
+          <div
+            style={{
+              marginTop: "15px",
+              color: "#fff",
+              fontSize: "14px",
+              display: "flex",
+              justifyContent: "center",
+              gap: "10px",
+              flexWrap: "wrap",
+            }}
+          >
+            <span>1 $JADE = $0.01</span>
+            <span>|</span>
+            <span>LISTING PRICE = TBA</span>
+          </div>
+
+          {/* Stats Box */}
+          <div
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.2)",
+              borderRadius: "12px",
+              padding: "15px",
+              marginTop: "15px",
+              color: "#fff",
+              fontSize: "14px",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontWeight: "500",
+                marginBottom: "8px",
+              }}
+            >
+              <span>TOKENS SOLD:</span>
+              <span>USD RAISED:</span>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontSize: "16px",
+                fontWeight: "bold",
+              }}
+            >
+              <span>10,000 / 50,000,000</span>
+              <span>$100 / $500,000</span>
+            </div>
+          </div>
 
           {/* Modern Pay / Receive Container */}
-          <div className="modern-container">
+          <div className="modern-container" style={{ marginTop: "20px" }}>
             <div className="modern-box">
               <label>You Pay (USD)</label>
-              <input type="text" value={`$${payAmount.toFixed(2)}`} readOnly />
+              <input
+                type="number"
+                placeholder="0.00"
+                value={payAmount}
+                onChange={(e) => setPayAmount(Number(e.target.value))}
+              />
             </div>
             <div className="modern-box">
               <label>You Get ($JADE)</label>
-              <input
-                type="number"
-                placeholder="0"
-                value={receiveAmount}
-                onChange={(e) => setReceiveAmount(Number(e.target.value))}
-              />
+              <input type="number" value={receiveAmount} readOnly />
             </div>
           </div>
 
@@ -88,17 +182,12 @@ const App: React.FC = () => {
               marginTop: "15px",
             }}
           >
-            <span>Accepting:</span>
+            <span style={{ color: "#fff" }}>Accepting:</span>
             <div style={{ display: "flex", gap: "12px" }}>
               <SiEthereum size={20} style={{ color: "#fff" }} />
               <SiBitcoin size={20} style={{ color: "#fff" }} />
               <SiPolygon size={20} style={{ color: "#fff" }} />
             </div>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="progress-bar">
-            <div className="progress-fill" style={{ width: "10%" }}></div>
           </div>
 
           {/* Buy Now Button */}
@@ -111,7 +200,7 @@ const App: React.FC = () => {
           </button>
         </div>
 
-        {/* Presale Message Fixed to Left Side of Screen */}
+        {/* Presale Message */}
         <p
           className="presale-message"
           style={{
