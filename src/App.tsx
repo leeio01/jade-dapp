@@ -165,7 +165,7 @@ const App: React.FC = () => {
               .presale-message {
                 left: auto !important;
                 right: 20px !important;
-                top: 180px !important;
+                top: 200px !important;
                 max-width: 90% !important;
                 font-size: 16px !important;
                 text-align: left;

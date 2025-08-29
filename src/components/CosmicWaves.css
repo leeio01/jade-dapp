@@ -20,7 +20,7 @@
   border-radius: 40%;
   background: radial-gradient(
     circle at center,
-    rgba(0, 255, 163, 0.15) 0%,
+    rgba(0, 255, 163, 0.3) 0%,
     transparent 70%
   );
   animation: wave 12s linear infinite;
