@@ -11,6 +11,7 @@ import "./App.css";
 import CosmicWaves from "./components/CosmicWaves";
 import CosmicWaves2 from "./components/CosmicWaves2";
 import ContractInfo from "./components/ContractInfo";
+import AboutJade from "./components/AboutJade";
 
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useAccount } from "wagmi";
@@ -101,7 +102,11 @@ const App: React.FC = () => {
           </div>
 
           {/* Buy Now Button */}
-          <button className="buy-btn" onClick={() => open()} disabled={isConnected}>
+          <button
+            className="buy-btn"
+            onClick={() => open()}
+            disabled={isConnected}
+          >
             {isConnected ? "Wallet Connected" : "Buy Now"}
           </button>
         </div>
@@ -175,13 +180,18 @@ const App: React.FC = () => {
         <ContractInfo
           contractAddress="0x6a145d811f6cf02a2086dc52ff718d76fcaf78cd"
           network="POLYGON"
-          logo={tokenLogo} // ✅ logo now passed correctly
+          logo={tokenLogo}
         />
       </section>
 
       {/* Cosmic waves under presale */}
       <section className="cosmicwaves2-section">
         <CosmicWaves2 />
+      </section>
+
+      {/* About JADE Section */}
+      <section className="aboutjade-section" style={{ marginTop: "50px" }}>
+        <AboutJade />
       </section>
     </div>
   );
