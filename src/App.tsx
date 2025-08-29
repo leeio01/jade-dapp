@@ -15,8 +15,9 @@ import ContractInfo from "./components/ContractInfo";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useAccount } from "wagmi";
 
-// Import your logo
+// Import your logos
 import logo from "./assets/logo.png";
+import tokenLogo from "./assets/tokenlogo.png";
 
 const App: React.FC = () => {
   const logoStyle = { color: "#fff", opacity: 0.9 };
@@ -154,16 +155,15 @@ const App: React.FC = () => {
           {`
             @media (max-width: 768px) {
               .crypto-marquee {
-                margin-top: 66px !important; /* push slider down on mobile */
+                margin-top: 66px !important;
               }
-
               .presale-message {
-                left: auto !important;       /* remove left positioning */
-                right: 20px !important;      /* move box to the right side */
-                top: 180px !important;       /* vertical position */
+                left: auto !important;
+                right: 20px !important;
+                top: 180px !important;
                 max-width: 90% !important;
                 font-size: 16px !important;
-                text-align: left;            /* keep text aligned left inside the box */
+                text-align: left;
               }
             }
           `}
@@ -175,6 +175,7 @@ const App: React.FC = () => {
         <ContractInfo
           contractAddress="0x6a145d811f6cf02a2086dc52ff718d76fcaf78cd"
           network="POLYGON"
+          logo={tokenLogo} // ✅ logo now passed correctly
         />
       </section>
 

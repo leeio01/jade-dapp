@@ -3,20 +3,21 @@ import React, { useState, useEffect } from "react";
 interface ContractInfoProps {
   contractAddress: string;
   network: string;
-  boxWidth?: string; // optional width prop
+  logo: string;
+  boxWidth?: string;
 }
 
 const ContractInfo: React.FC<ContractInfoProps> = ({
   contractAddress,
   network,
+  logo,
   boxWidth = "900px",
 }) => {
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detect mobile width
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize(); // check on mount
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -31,68 +32,148 @@ const ContractInfo: React.FC<ContractInfoProps> = ({
       <div
         style={{
           ...styles.box,
-          width: isMobile ? "90%" : boxWidth, // responsive width
-          borderRadius: isMobile ? "20px" : "12px", // more rounded corners on mobile
+          width: isMobile ? "85%" : boxWidth,
+          borderRadius: isMobile ? "20px" : "12px",
         }}
       >
-        {/* Headline */}
-        <div
-          style={{
-            ...styles.label,
-            fontSize: isMobile ? "12px" : "13px",
-            marginBottom: isMobile ? "4px" : "6px",
-          }}
-        >
-          CONTRACT ADDRESS
-        </div>
-
-        {/* Address + network + copy button */}
-        <div
-          style={{
-            ...styles.row,
-            flexDirection: isMobile ? "column" : "row",
-            alignItems: isMobile ? "flex-start" : "center",
-            gap: isMobile ? "8px" : "20px", // extra space between left & right
-          }}
-        >
+        {isMobile ? (
+          // Mobile layout: Logo | CONTRACT ADDRESS + actual address | Copy icon
           <div
             style={{
-              ...styles.leftGroup,
-              flexDirection: isMobile ? "column" : "row",
-              gap: isMobile ? "4px" : "14px",
-              alignItems: isMobile ? "flex-start" : "center",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "10px",
             }}
           >
-            <div
+            {/* Logo */}
+            <img
+              src={logo}
+              alt="Token Logo"
               style={{
-                ...styles.value,
-                fontSize: isMobile ? "14px" : "16px",
+                width: "32px",
+                height: "32px",
+                borderRadius: "50%",
+                objectFit: "cover",
+                boxShadow: "0 0 8px rgba(0,0,0,0.3)",
               }}
-            >
-              {contractAddress}
-            </div>
-            <div
-              style={{
-                ...styles.network,
-                fontSize: isMobile ? "12px" : "14px",
-              }}
-            >
-              NETWORK: {network}
+            />
+
+            {/* Contract Address */}
+            <div style={{ flex: 1 }}>
+              <div
+                style={{
+                  fontWeight: 600,
+                  fontSize: "12px",
+                  color: "#aaa",
+                  letterSpacing: "1px",
+                }}
+              >
+                CONTRACT ADDRESS
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: "10px",
+                  flexWrap: "wrap",
+                }}
+              >
+                <span
+                  style={{
+                    fontWeight: 600,
+                    fontSize: "14px",
+                    color: "#fff",
+                    wordBreak: "break-all",
+                    flex: 1,
+                  }}
+                >
+                  {contractAddress}
+                </span>
+
+                {/* Copy icon only on mobile */}
+                <button
+                  onClick={copyToClipboard}
+                  style={{
+                    ...styles.button,
+                    padding: "5px 8px",
+                    width: "auto",
+                  }}
+                >
+                  📋
+                </button>
+              </div>
             </div>
           </div>
-
-          <button
+        ) : (
+          // Desktop layout: Logo + Contract Details with Copy button on right
+          <div
             style={{
-              ...styles.button,
-              padding: isMobile ? "5px 12px" : "6px 15px",
-              marginTop: isMobile ? "8px" : "0",
-              width: isMobile ? "100%" : "auto",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "15px",
             }}
-            onClick={copyToClipboard}
           >
-            COPY
-          </button>
-        </div>
+            {/* Left: Logo + Contract Details */}
+            <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+              {/* Logo */}
+              <img
+                src={logo}
+                alt="Token Logo"
+                style={{
+                  width: "38px",
+                  height: "38px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  boxShadow: "0 0 8px rgba(0,0,0,0.3)",
+                }}
+              />
+
+              {/* Contract Details */}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "4px",
+                }}
+              >
+                <span
+                  style={{
+                    fontWeight: 600,
+                    fontSize: "13px",
+                    color: "#aaa",
+                    letterSpacing: "1px",
+                  }}
+                >
+                  CONTRACT ADDRESS
+                </span>
+                <span
+                  style={{
+                    fontWeight: 600,
+                    fontSize: "16px",
+                    wordBreak: "break-all",
+                    color: "#fff",
+                  }}
+                >
+                  {contractAddress} {" "} NETWORK: {network}
+                </span>
+              </div>
+            </div>
+
+            {/* Right: Copy button */}
+            <button
+              style={{
+                ...styles.button,
+                padding: "6px 15px",
+              }}
+              onClick={copyToClipboard}
+            >
+              COPY
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -107,39 +188,12 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   box: {
     background: "#1a1a1f",
-    borderRadius: "12px", // default rounded corners
+    borderRadius: "12px",
     padding: "20px",
     color: "white",
     boxShadow: "0 4px 12px rgba(0,0,0,0.5)",
   },
-  label: {
-    fontSize: "13px",
-    fontWeight: 600,
-    opacity: 0.7,
-    marginBottom: "6px",
-    letterSpacing: "1px",
-  },
-  row: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  leftGroup: {
-    display: "flex",
-    alignItems: "center",
-    gap: "14px",
-  },
-  value: {
-    fontSize: "16px",
-    fontWeight: 600,
-  },
-  network: {
-    fontSize: "14px",
-    fontWeight: 600,
-    color: "#00ffa3",
-  },
   button: {
-    padding: "6px 15px",
     background: "#00ffa3",
     border: "none",
     borderRadius: "50px",
