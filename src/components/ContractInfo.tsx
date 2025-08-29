@@ -32,7 +32,7 @@ const ContractInfo: React.FC<ContractInfoProps> = ({
       <div
         style={{
           ...styles.box,
-          width: isMobile ? "85%" : boxWidth,
+          width: isMobile ? "80%" : boxWidth,
           borderRadius: isMobile ? "20px" : "12px",
         }}
       >
