@@ -1,13 +1,30 @@
-import "./AboutJade.css";
-
 const AboutJade = () => {
+  const paragraphStyle = {
+    fontSize: "22px", // bigger font
+    lineHeight: "1.9",
+    color: "#e8f0ff",
+    marginBottom: "1.5rem",
+  };
+
+  const headingStyle = {
+    fontSize: "3rem", // bigger heading
+    color: "#ffffff",
+    marginBottom: "2rem",
+  };
+
+  const containerStyle = {
+    padding: "3rem 2rem",
+    maxWidth: "1200px",
+    margin: "0 auto",
+  };
+
   return (
-    <div className="aboutjade-container">
-      <h2 className="aboutjade-heading">About JADE</h2>
-      <div className="aboutjade-content">
+    <div style={containerStyle}>
+      <h2 style={headingStyle}>About JADE</h2>
+      <div style={{ display: "flex", gap: "3rem", flexWrap: "wrap" }}>
         {/* Left Column */}
-        <div className="aboutjade-column">
-          <p className="aboutjade-text">
+        <div style={{ flex: "1 1 45%" }}>
+          <p style={paragraphStyle}>
             JADE Token is the innovative new music crypto designed to allow
             global independent musicians to connect directly with fans through
             secure, instant transactions. By cutting out middlemen, JADE enables
@@ -23,8 +40,8 @@ const AboutJade = () => {
         </div>
 
         {/* Right Column */}
-        <div className="aboutjade-column">
-          <p className="aboutjade-text">
+        <div style={{ flex: "1 1 45%" }}>
+          <p style={paragraphStyle}>
             The JADE Token Team is a collaborative network of world class minds
             in web3, AI, and the music industry. Between them they have
             developed leading-edge social platforms, invented patented solutions
@@ -37,8 +54,20 @@ const AboutJade = () => {
       </div>
 
       {/* Button Section */}
-      <div className="aboutjade-button-container">
-        <button className="aboutjade-button">How to Buy JADE</button>
+      <div style={{ marginTop: "2rem" }}>
+        <button
+          style={{
+            backgroundColor: "#fffff",
+            color: "#000",
+            border: "none",
+            padding: "0.8rem 1.5rem",
+            fontSize: "1.3rem",
+            borderRadius: "0.6rem",
+            cursor: "pointer",
+          }}
+        >
+          How to Buy JADE
+        </button>
       </div>
     </div>
   );
