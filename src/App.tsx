@@ -16,7 +16,6 @@ import AboutJade from "./components/AboutJade";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useAccount } from "wagmi";
 
-// Import your logos
 import logo from "./assets/logo.png";
 import tokenLogo from "./assets/tokenlogo.png";
 
@@ -69,12 +68,12 @@ const App: React.FC = () => {
           >
             <h2 style={{ color: "#fff", margin: 0 }}>Buy $JADE Token</h2>
             <span
+              className="live-badge"
               style={{
                 background: "red",
                 color: "#fff",
-                fontSize: "24px",
-                fontWeight: "600",
-                maxWidth: "500px",
+                fontSize: "1.2rem",
+                fontWeight: 600,
                 padding: "4px 10px",
                 borderRadius: "12px",
               }}
@@ -102,7 +101,7 @@ const App: React.FC = () => {
             $100 / $500,000
           </div>
 
-          {/* Token Prices (one line) */}
+          {/* Token Prices */}
           <div
             style={{
               marginTop: "15px",
@@ -136,7 +135,7 @@ const App: React.FC = () => {
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                fontWeight: "500",
+                fontWeight: 500,
                 marginBottom: "8px",
               }}
             >
@@ -156,7 +155,7 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          {/* Modern Pay / Receive Container */}
+          {/* Modern Pay / Receive */}
           <div className="modern-container" style={{ marginTop: "20px" }}>
             <div className="modern-box">
               <label>You Pay (USD)</label>
@@ -210,8 +209,8 @@ const App: React.FC = () => {
             top: "300px",
             color: "#fff",
             opacity: 0.85,
-            fontSize: "24px", // ⬅️ Bigger text
-            fontWeight: 600,  // ⬅️ More bold
+            fontSize: "clamp(16px, 2vw, 24px)", // ⬅️ Responsive size
+            fontWeight: 600,
             maxWidth: "500px",
             lineHeight: "1.5",
           }}
@@ -220,7 +219,7 @@ const App: React.FC = () => {
           be part of reshaping the intersection of blockchain and music.
         </p>
 
-        {/* Logos marquee */}
+        {/* Logos Marquee */}
         <div className="crypto-marquee" style={{ marginTop: "0px" }}>
           <div className="crypto-track">
             <div className="logo-item">
@@ -249,29 +248,20 @@ const App: React.FC = () => {
         {/* Responsive Styling */}
         <style>
           {`
-            /* Move card up on desktop (close gap) */
             @media (min-width: 769px) {
-              .modern-presale {
-                margin-top: -60px;
-              }
+              .modern-presale { margin-top: -60px; }
             }
-
-            /* Keep normal on mobile */
             @media (max-width: 768px) {
-              .crypto-marquee {
-                margin-top: 66px !important;
-              }
+              .crypto-marquee { margin-top: 66px !important; }
               .presale-message {
                 left: auto !important;
                 right: 20px !important;
                 top: 200px !important;
                 max-width: 90% !important;
-                font-size: 18px !important; /* slightly smaller on mobile */
+                font-size: 18px !important;
                 text-align: left;
               }
-              .modern-presale {
-                margin-top: 20px !important;
-              }
+              .modern-presale { margin-top: 20px !important; }
             }
           `}
         </style>
