@@ -72,8 +72,9 @@ const App: React.FC = () => {
               style={{
                 background: "red",
                 color: "#fff",
-                fontSize: "12px",
-                fontWeight: "bold",
+                fontSize: "24px",
+                fontWeight: "600",
+                maxWidth: "500px",
                 padding: "4px 10px",
                 borderRadius: "12px",
               }}
@@ -208,10 +209,11 @@ const App: React.FC = () => {
             left: "110px",
             top: "300px",
             color: "#fff",
-            opacity: 0.5,
-            fontSize: "18px",
-            fontWeight: 500,
-            maxWidth: "400px",
+            opacity: 0.85,
+            fontSize: "24px", // ⬅️ Bigger text
+            fontWeight: 600,  // ⬅️ More bold
+            maxWidth: "500px",
+            lineHeight: "1.5",
           }}
         >
           Step into the AI-powered crypto revolution. Join our presale journey to
@@ -223,15 +225,15 @@ const App: React.FC = () => {
           <div className="crypto-track">
             <div className="logo-item">
               <SiBinance size={36} style={logoStyle} />
-              <span style={logoStyle}>Binance</span>
+              <span style={logoStyle}>PramatixAI</span>
             </div>
             <div className="logo-item">
               <SiCocacola size={36} style={logoStyle} />
-              <span style={logoStyle}>CocaCola</span>
+              <span style={logoStyle}>Tendermint</span>
             </div>
             <div className="logo-item">
               <SiEthereum size={36} style={logoStyle} />
-              <span style={logoStyle}>Ethereum</span>
+              <span style={logoStyle}>WINTERMUTE</span>
             </div>
             <div className="logo-item">
               <SiLitecoin size={36} style={logoStyle} />
@@ -244,9 +246,17 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile adjustments */}
+        {/* Responsive Styling */}
         <style>
           {`
+            /* Move card up on desktop (close gap) */
+            @media (min-width: 769px) {
+              .modern-presale {
+                margin-top: -60px;
+              }
+            }
+
+            /* Keep normal on mobile */
             @media (max-width: 768px) {
               .crypto-marquee {
                 margin-top: 66px !important;
@@ -256,8 +266,11 @@ const App: React.FC = () => {
                 right: 20px !important;
                 top: 200px !important;
                 max-width: 90% !important;
-                font-size: 16px !important;
+                font-size: 18px !important; /* slightly smaller on mobile */
                 text-align: left;
+              }
+              .modern-presale {
+                margin-top: 20px !important;
               }
             }
           `}

@@ -1,34 +1,28 @@
 .crypto-marquee {
   overflow: hidden;
-  position: relative;
+  white-space: nowrap;
   width: 100%;
-  margin-top: -20px;
-  background-color: transparent;
+  margin: 20px 0;
+  position: relative;
 }
 
 .crypto-track {
-  display: flex;
-  gap: 30px; /* reduce gap for smaller screens */
-  animation: scroll 20s linear infinite;
+  display: inline-flex;
+  animation: marquee 20s linear infinite;
 }
 
-@keyframes scroll {
+.logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes marquee {
   0% {
-    transform: translateX(0); /* start fully visible */
+    transform: translateX(0%);
   }
   100% {
-    transform: translateX(-50%); /* move half the width for continuous loop */
-  }
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .crypto-track {
-    gap: 20px; /* smaller gap */
-    animation-duration: 30s; /* slower scroll for better visibility */
-  }
-  
-  .crypto-track .logo-item span {
-    display: none; /* hide text labels on mobile for space */
+    transform: translateX(-50%);
   }
 }

@@ -1,15 +1,34 @@
 import React from "react";
-import { SiBinance, SiCocacola } from "react-icons/si";
+import { FaBrain, FaSeedling, FaSnowflake, FaCheckCircle, FaCloud } from "react-icons/fa";
 import "./TopCryptoCompanies.css";
 
 const TopCryptoCompanies: React.FC = () => {
+  const logoStyle = { color: "#fff", margin: "0 20px" };
+
   return (
     <div className="crypto-marquee">
       <div className="crypto-track">
-        <SiBinance size={60} color="#FFFFFF" />
-        <SiCocacola size={60} color="#FFFFFF" />
-        <SiBinance size={60} color="#FFFFFF" />
-        <SiCocacola size={60} color="#FFFFFF" />
+        {/* New companies */}
+        <div className="logo-item">
+          <FaBrain size={60} style={logoStyle} />
+          <span style={logoStyle}>PramatixAI</span>
+        </div>
+        <div className="logo-item">
+          <FaSeedling size={60} style={logoStyle} />
+          <span style={logoStyle}>Febsermint</span>
+        </div>
+        <div className="logo-item">
+          <FaSnowflake size={60} style={logoStyle} />
+          <span style={logoStyle}>Wintermute</span>
+        </div>
+        <div className="logo-item">
+          <FaCheckCircle size={60} style={logoStyle} />
+          <span style={logoStyle}>1Confirmation</span>
+        </div>
+        <div className="logo-item">
+          <FaCloud size={60} style={logoStyle} />
+          <span style={logoStyle}>OrionCloud</span>
+        </div>
       </div>
     </div>
   );
